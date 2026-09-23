@@ -1,7 +1,6 @@
 # Angel Israel Gonzalez Torres
+
 # Práctica: ArrayList vs. LinkedList en Java Collections Framework
-
-
 
 ## 1. Propósito
 
@@ -25,7 +24,7 @@ utilizar `ArrayList` o `LinkedList`.
 
 Crear el proyecto y su respectibo repositorio:
 
-``` text
+```text
 ComparacionListas/
 └── src/
     ├── EjemploArrayList.java
@@ -38,7 +37,7 @@ ComparacionListas/
 
 ## 4. Experimento con ArrayList
 
-``` java
+```java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +66,7 @@ public class EjemploArrayList {
 
 `ArrayList` utiliza conceptualmente un arreglo dinámico:
 
-``` text
+```text
 Índice       0       1       2       3       4
              ▼       ▼       ▼       ▼       ▼
           ┌───────┬───────┬───────┬───────┬───────┐
@@ -75,12 +74,19 @@ ArrayList │   A   │   B   │   C   │   D   │   E   │
           └───────┴───────┴───────┴───────┴───────┘
 ```
 
-**Pregunta:** ¿Qué ocurre internamente al insertar en la posición 0?
-¿Por qué el acceso por índice puede realizarse eficientemente? R.
+**Pregunta:**  
+¿Qué ocurre internamente al insertar en la posición 0?  
+Los elementos se recorren hacia adelante y se inserta un nuevo elemento en la primera posicion.  
+Tiene un costo de `O(n)`  
+¿Por qué el acceso por índice puede realizarse eficientemente?  
+`ArrayList` esta implementado sobre un arreglo dinamico, lo que le permite un acceso directo al elemento mediante un indice `i`.  
+La fórmula para calcular ubicación de memoria en un arreglo es:  
+ `dirección = dirección_base + (índice × tamaño_del_elemento)`  
+ Tiene un costo de `O(1)`
 
 ## 5. Experimento con LinkedList
 
-``` java
+```java
 import java.util.LinkedList;
 import java.util.List;
 
@@ -101,7 +107,7 @@ public class EjemploLinkedList {
 
 `LinkedList` es una lista doblemente enlazada:
 
-``` text
+```text
 ┌─────┐     ┌─────┐     ┌─────┐     ┌─────┐
 │  A  │ ⇄   │  B  │ ⇄   │  C  │ ⇄   │  D  │
 └─────┘     └─────┘     └─────┘     └─────┘
@@ -109,7 +115,7 @@ public class EjemploLinkedList {
 
 ## 6. Comparación funcional
 
-``` java
+```java
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -142,15 +148,15 @@ ambas implementaciones.
 
 ## 7. Complejidad temporal
 
-|Operación|ArrayList|LinkedList|
-|-----------|---------|----------|
-|`get(i)`|O(1)|O(n)|
-|`set(i,x)`|                        O(1) |        O(n)|
-| `add(x)` al final|      O(1) amortizado  |       O(1)|
-| `add(0,x)` |                       O(n) |        O(1)|
-| `remove(0)`|                      O(n) |        O(1)|
-| búsqueda por valor|               O(n) |        O(n)|
-| recorrido completo |               O(n) |        O(n)
+| Operación          | ArrayList       | LinkedList |
+| ------------------ | --------------- | ---------- |
+| `get(i)`           | O(1)            | O(n)       |
+| `set(i,x)`         | O(1)            | O(n)       |
+| `add(x)` al final  | O(1) amortizado | O(1)       |
+| `add(0,x)`         | O(n)            | O(1)       |
+| `remove(0)`        | O(n)            | O(1)       |
+| búsqueda por valor | O(n)            | O(n)       |
+| recorrido completo | O(n)            | O(n)       |
 
 La complejidad asintótica no implica que una implementación sea siempre
 más rápida. En `LinkedList`, una inserción en una posición intermedia
@@ -158,7 +164,7 @@ requiere primero localizar el nodo, lo que puede costar O(n).
 
 ## 8. Benchmark de acceso
 
-``` java
+```java
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -202,32 +208,32 @@ public class BenchmarkListas {
 
 Ejecute al menos tres veces y registre:
 
-  |Ejecución |    ArrayList |  LinkedList|
-  |-----------| -----------| ------------|
-  |1   |        |       |     
-  |2   |        |       |                      
- | 3   |        |       |                     
- | Promedio|        |       |              
+| Ejecución | ArrayList | LinkedList |
+| --------- | --------- | ---------- |
+| 1         |           |            |
+| 2         |           |            |
+| 3         |           |            |
+| Promedio  |           |            |
 
 Después sustituya el recorrido mediante `get(i)` por:
 
-``` java
+```java
 for (Integer valor : lista) {
     suma += valor;
 }
 ```
 
 Compare nuevamente y registre resultados
-|Ejecución |    ArrayList |  LinkedList|
-  |-----------| -----------| ------------|
-  |1   |        |       |     
-  |2   |        |       |                      
- | 3   |        |       |                     
- | Promedio|        |       |              
+|Ejecución | ArrayList | LinkedList|
+|-----------| -----------| ------------|
+|1 | | |  
+ |2 | | |  
+ | 3 | | |  
+ | Promedio| | |
 
 ## 9. Inserciones al inicio
 
-``` java
+```java
 private static void medirInsercionInicio(
         String nombre, List<Integer> lista) {
 
@@ -246,7 +252,7 @@ private static void medirInsercionInicio(
 
 Ejecute con:
 
-``` java
+```java
 medirInsercionInicio("ArrayList", new ArrayList<>());
 medirInsercionInicio("LinkedList", new LinkedList<>());
 ```
@@ -255,7 +261,7 @@ Formule una hipótesis antes de ejecutar y compare con los resultados.
 
 ## 10. Inserciones al final
 
-``` java
+```java
 private static void medirInsercionFinal(
         String nombre, List<Integer> lista) {
 
@@ -274,16 +280,16 @@ private static void medirInsercionFinal(
 
 Registre los resultados:
 
- | Operación   |           ArrayList |  LinkedList|
- | ------------|-------------------| ------------|
- | Insertar al inicio |            |          |
- | Insertar al final |            |   |
+| Operación          | ArrayList | LinkedList |
+| ------------------ | --------- | ---------- |
+| Insertar al inicio |           |            |
+| Insertar al final  |           |            |
 
 ## 11. Eliminaciones
 
 Prepare dos listas con el mismo número de elementos y mida:
 
-``` java
+```java
 while (!lista.isEmpty()) {
     lista.remove(0);
 }
@@ -296,7 +302,7 @@ puede modificar los enlaces del primer nodo.
 
 `LinkedList` también implementa `Deque`.
 
-``` java
+```java
 import java.util.LinkedList;
 
 public class EjemploDeque {
@@ -324,7 +330,7 @@ servidor.
 
 El sistema deberá permitir:
 
-``` text
+```text
 1. Agregar trabajo normal
 2. Agregar trabajo urgente
 3. Procesar siguiente trabajo
@@ -336,13 +342,13 @@ El sistema deberá permitir:
 
 ### Primera implementación
 
-``` java
+```java
 List<String> trabajos = new ArrayList<>();
 ```
 
 Operaciones:
 
-``` java
+```java
 trabajos.add(trabajo);       // normal
 trabajos.add(0, trabajo);    // urgente
 trabajos.get(0);             // consultar siguiente
@@ -353,7 +359,7 @@ trabajos.remove(0);          // procesar
 
 Cambie únicamente la implementación:
 
-``` java
+```java
 List<String> trabajos = new LinkedList<>();
 ```
 
@@ -368,13 +374,13 @@ eliminar el inicio.
 
 Refactorice utilizando:
 
-``` java
+```java
 Deque<String> trabajos = new LinkedList<>();
 ```
 
 y las operaciones:
 
-``` java
+```java
 addFirst()
 addLast()
 peekFirst()
@@ -383,7 +389,7 @@ pollFirst()
 
 Ejemplo:
 
-``` java
+```java
 trabajos.addLast("Ejecutar pruebas");
 trabajos.addFirst("Corregir servidor");
 
@@ -397,31 +403,28 @@ las operaciones requeridas.
 
 ## 15. Tabla comparativa final
 
-  
-| Característica|`ArrayList` |`LinkedList`|
-|------------------|-----------------|---------------------------------|
-| Implementa `List` |      Sí    |                 Sí|
-|Estructura      |        Arreglo dinámico  |      Lista doblemente enlazada|
-|Acceso `get(i)`|         O(1)  |                  O(n)|
-|  Modificación `set(i)`|   O(1) |                   O(n)|
-|  Inserción al final|      O(1) amortizado |        O(1)|
-|  Inserción al inicio|     O(n) |                   O(1)|
-|  Eliminación al inicio|   O(n) |                   O(1)|
-|  Búsqueda por valor|      O(n) |                   O(n)|
- | Recorrido completo |     O(n) |                   O(n)|
- | Implementa `Deque`|      No   |                   Sí|
-|  Memoria adicional por elemento|   Menor en general  |      Mayor por los enlaces|
-|Acceso aleatorio frecuente|        Adecuado|                Poco adecuado|
-|Operaciones frecuentes en extremos|  No es su principal fortaleza|     Adecuado|
-                              
-
+| Característica                     | `ArrayList`                  | `LinkedList`              |
+| ---------------------------------- | ---------------------------- | ------------------------- |
+| Implementa `List`                  | Sí                           | Sí                        |
+| Estructura                         | Arreglo dinámico             | Lista doblemente enlazada |
+| Acceso `get(i)`                    | O(1)                         | O(n)                      |
+| Modificación `set(i)`              | O(1)                         | O(n)                      |
+| Inserción al final                 | O(1) amortizado              | O(1)                      |
+| Inserción al inicio                | O(n)                         | O(1)                      |
+| Eliminación al inicio              | O(n)                         | O(1)                      |
+| Búsqueda por valor                 | O(n)                         | O(n)                      |
+| Recorrido completo                 | O(n)                         | O(n)                      |
+| Implementa `Deque`                 | No                           | Sí                        |
+| Memoria adicional por elemento     | Menor en general             | Mayor por los enlaces     |
+| Acceso aleatorio frecuente         | Adecuado                     | Poco adecuado             |
+| Operaciones frecuentes en extremos | No es su principal fortaleza | Adecuado                  |
 
 ## 16. Preguntas de análisis
 
 1.  ¿Qué interfaz implementan tanto `ArrayList` como `LinkedList`? R.
 2.  ¿Cuál es la principal diferencia en su estructura interna? R.
 3.  ¿Por qué `ArrayList.get(i)` tiene complejidad O(1)? R.
-4.  ¿Por qué `LinkedList.get(i)` tiene complejidad O(n)?R. 
+4.  ¿Por qué `LinkedList.get(i)` tiene complejidad O(n)?R.
 5.  ¿Qué ocurre internamente cuando se ejecuta
     `ArrayList.add(0, elemento)`? R.
 6.  ¿Por qué `LinkedList.add(0, elemento)` no necesita desplazar los
@@ -444,7 +447,7 @@ las operaciones requeridas.
 
 ## 17. Entregables
 
-``` text
+```text
 ComparacionListas/
 ├── README.md
 └── src/
@@ -457,9 +460,10 @@ ComparacionListas/
 ```
 
 En `README.md` incluir:
--   tabla con los tiempos obtenidos;
--   comparación entre acceso mediante `get(i)` y `for-each`;
--   resultados de inserciones y eliminaciones;
--   tabla comparativa final;
--   respuestas a las preguntas de análisis;
--   conclusión técnica.
+
+- tabla con los tiempos obtenidos;
+- comparación entre acceso mediante `get(i)` y `for-each`;
+- resultados de inserciones y eliminaciones;
+- tabla comparativa final;
+- respuestas a las preguntas de análisis;
+- conclusión técnica.
