@@ -210,10 +210,10 @@ Ejecute al menos tres veces y registre:
 
 | Ejecución | ArrayList | LinkedList |
 | --------- | --------- | ---------- |
-| 1         |           |            |
-| 2         |           |            |
-| 3         |           |            |
-| Promedio  |           |            |
+| 1         | 7.296     | 3313.308   |
+| 2         | 9.113     | 3549.578   |
+| 3         | 9.505     | 3669.988   |
+| Promedio  | 8.638     | 3510.958   |
 
 Después sustituya el recorrido mediante `get(i)` por:
 
@@ -224,12 +224,12 @@ for (Integer valor : lista) {
 ```
 
 Compare nuevamente y registre resultados
-|Ejecución | ArrayList | LinkedList|
-|-----------| -----------| ------------|
-|1 | | |  
- |2 | | |  
- | 3 | | |  
- | Promedio| | |
+| Ejecución | ArrayList | LinkedList |
+| --------- | --------- | ---------- |
+| 1 | 9.237 | 5.087 |
+| 2 | 8.115 | 3.022 |
+| 3 | 9.694 | 3.395 |
+| Promedio | 9.015 | 3.834 |
 
 ## 9. Inserciones al inicio
 
